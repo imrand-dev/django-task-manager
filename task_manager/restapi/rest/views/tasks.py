@@ -18,7 +18,7 @@ class PrivateTaskView(ListCreateAPIView):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
     parser_class = [MultiPartParser, FormParser]
-    http_method_names = ["get", "post"]
+    # http_method_names = ["get", "post"]
 
     def get_queryset(self):
         user = self.request.user
@@ -29,7 +29,7 @@ class PrivateTaskView(ListCreateAPIView):
 class PrivateTaskDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
-    http_method_names = ["get", "patch", "delete"]
+    # http_method_names = ["get", "patch", "delete"]
 
     def get_object(self):
         user = self.request.user

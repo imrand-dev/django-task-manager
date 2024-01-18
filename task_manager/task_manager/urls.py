@@ -31,7 +31,7 @@ admin.site.index_title = "Task Management Dashboard"
 urlpatterns = [
     path("admin/", admin.site.urls),
     # drf session auth
-    path('api-auth/', include('rest_framework.urls')),
+    # path('api-auth/', include('rest_framework.urls')),
     # swagger api
     path("api/schema", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
@@ -40,6 +40,8 @@ urlpatterns = [
     path("tasks", include("tasks.urls")),
     # apis
     path("api/v1", include("restapi.rest.urls")),
+    # users
+    path("users", include("account.urls")),
 ]
 
 if settings.DEBUG:
