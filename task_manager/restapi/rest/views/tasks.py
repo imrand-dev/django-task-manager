@@ -18,6 +18,7 @@ class PrivateTaskView(ListCreateAPIView):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
     parser_class = [MultiPartParser, FormParser]
+    http_method_names = ["get", "post"]
 
     def get_queryset(self):
         user = self.request.user
@@ -28,7 +29,10 @@ class PrivateTaskView(ListCreateAPIView):
 class PrivateTaskDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
+    http_method_names = ["get", "patch", "delete"]
 
     def get_object(self):
+        user = self.request.user
         task_uid = self.kwargs.get("task_uid", None)
-        return get_object_or_404(Task, uid=task_uid)
+        
+        return get_object_or_404(Task, uid=task_uid, created_by=user)

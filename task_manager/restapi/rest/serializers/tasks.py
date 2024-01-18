@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from rest_framework import serializers
 
 from restapi.rest.serializers.photos import TaskPhotoSerializer
@@ -35,6 +37,12 @@ class TaskSerializer(serializers.ModelSerializer):
             "updated_at",
             "slug",
         ]
+
+    def validate_due_date(self, value):
+        if value < timezone.now().date():
+            raise serializers.ValidationError("Due date cannot be in the past.")
+        
+        return value
 
     def create(self, validated_data):
         user = self.context["request"].user
