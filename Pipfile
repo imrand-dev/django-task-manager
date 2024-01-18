@@ -18,6 +18,7 @@ django-cors-headers = "*"
 django-autoslug = "*"
 django-debug-toolbar = "*"
 djangorestframework-simplejwt = "*"
+pillow = "*"
 
 [dev-packages]
 
