@@ -9,7 +9,7 @@ from autoslug import AutoSlugField
 from common.base_model import BaseModelWithUID
 from tasks.choices import TaskPriority
 
-User = get_user_model()
+from account.models import User
 
 
 class Task(BaseModelWithUID):
@@ -22,7 +22,6 @@ class Task(BaseModelWithUID):
     created_by = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
-        related_name="user_tasks",
         null=True,
         blank=True,
     )
@@ -61,7 +60,6 @@ class TaskPhoto(BaseModelWithUID):
     created_by = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
-        related_name="photos",
         null=True,
         blank=True,
     )
