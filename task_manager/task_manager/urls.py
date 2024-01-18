@@ -26,7 +26,7 @@ from drf_spectacular.views import (
 )
 
 admin.site.site_header = "Task Management"
-admin.site.index_title = "Task Management Admin Dashboard"
+admin.site.index_title = "Task Management Dashboard"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -37,7 +37,9 @@ urlpatterns = [
     path("api/docs", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/docs/redoc", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     # tasks
-    path("", include("tasks.urls")),
+    path("tasks", include("tasks.urls")),
+    # apis
+    path("api/v1", include("restapi.rest.urls")),
 ]
 
 if settings.DEBUG:
