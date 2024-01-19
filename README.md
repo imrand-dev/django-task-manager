@@ -17,6 +17,10 @@
 * API Schema - drf-spectacular
 * Formatter & linter - black, flake8
 
+## Home page
+
+![home-page](https://i.ibb.co/TRN6DBc/image.png)
+
 ## Run locally 
 
 * Clone this repository to your local machine `https://github.com/imrand-dev/django-task-manager.git`.

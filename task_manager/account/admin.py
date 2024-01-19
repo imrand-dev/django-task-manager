@@ -8,7 +8,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-    list_display = ["first_name", "last_name", "email"]
+    list_display = ["first_name", "last_name", "email", "is_superuser"]
     search_fields = ("email",)
     ordering = ("email",)
     list_filter = ("email", "is_staff", "is_active",)

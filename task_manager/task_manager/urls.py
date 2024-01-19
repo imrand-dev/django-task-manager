@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.auth.models import Group
 from django.conf.urls.static import static
 from django.urls import path, include
 
@@ -27,6 +28,8 @@ from drf_spectacular.views import (
 
 admin.site.site_header = "Task Management"
 admin.site.index_title = "Task Management Dashboard"
+admin.site.unregister(Group)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
