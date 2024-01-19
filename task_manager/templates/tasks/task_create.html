@@ -1,0 +1,23 @@
+{% extends '../base.html' %} 
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">Task Update/Create</h2> 
+
+            <form class="form-control text-center" method="post" action="{% url 'task_lists' %}">
+                {% csrf_token %} 
+                {{ form.as_p }}
+
+                {% comment %} <a href="{% url 'add_task_photo' %}">Add Task Photo</a> {% endcomment %}
+                
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

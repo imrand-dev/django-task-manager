@@ -16,7 +16,6 @@ from tasks.models import TaskPhoto
 class PrivatePhotoView(ListCreateAPIView):
     serializer_class = TaskPhotoSerializer
     permission_classes = [IsAuthenticated]
-    http_method_names = ["get", "post"]
 
     def get_queryset(self):
         user = self.request.user 
@@ -27,7 +26,6 @@ class PrivatePhotoView(ListCreateAPIView):
 class PrivatePhotoDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = TaskPhotoSerializer
     permission_classes = [IsAuthenticated]
-    http_method_names = ["get", "patch", "delete"]
 
     def get_object(self):
         user = self.request.user

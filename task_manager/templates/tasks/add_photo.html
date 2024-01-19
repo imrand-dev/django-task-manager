@@ -1,0 +1,22 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<h2 class="text-center">Add Photo to Task</h2>
+
+<form
+    class="form-control text-center"
+    method="post"
+    enctype="multipart/form-data"
+>
+    {% csrf_token %} 
+    {{ form.as_p }}
+
+    <input
+        class="form-control btn btn-primary"
+        type="submit"
+        value="Add Task Photo"
+    />
+</form>
+
+{% endblock %}
