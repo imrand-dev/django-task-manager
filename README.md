@@ -54,7 +54,7 @@ postgresql> show databases;
 postgresql> use taskdb;
 ``````
 
-## Import Data json
+## Import JSON Data
 
 Run the below commands to import json data from `tasks.json`
 

@@ -19,6 +19,7 @@ django-autoslug = "*"
 django-debug-toolbar = "*"
 djangorestframework-simplejwt = "*"
 pillow = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
