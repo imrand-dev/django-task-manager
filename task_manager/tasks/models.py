@@ -1,12 +1,12 @@
 from django.db import models
 
 from django.core.exceptions import ValidationError
-from django.contrib.auth import get_user_model
 from django.utils import timezone
 
 from autoslug import AutoSlugField
 
 from common.base_model import BaseModelWithUID
+
 from tasks.choices import TaskPriority
 
 from account.models import User

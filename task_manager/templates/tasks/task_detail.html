@@ -1,0 +1,40 @@
+{% extends '../base.html' %} 
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>{{ task.title }}</h2>
+
+            <p>Description: {{ task.description }} </p>
+            <p>Created at: {{ task.created_at }}</p>
+            <p>Due date: {{ task.due_date }}</p>
+            <p>Priority: {{ task.priority }}</p>
+            <p> Status: 
+                {% if task.is_completed %} 
+                    <span>Completed</span>
+                {% else %} 
+                    <span>Incomplete</span>
+                {% endif %}
+            </p>
+
+            {% if task.task_photos.all %}
+                {% for image in task.task_photos.all %}
+                    <img class="" src="{{ image.photo.url }}" alt="" width="100">
+                {% endfor %}
+
+            {% else %}
+                <p>No photos for this task yet.</p>
+            {% endif %}
+        
+            <br>
+            <br>
+            <br>
+            <a class="btn btn-danger" href="{% url 'task_delete' task.slug %}">Delete Task</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

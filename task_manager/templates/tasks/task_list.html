@@ -1,0 +1,64 @@
+{% extends "../base.html" %}
+{% block title %} Task Manager {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <h1>Task Lists</h1>
+                <a href="{% url 'task_create' %}" class="btn btn-warning">Add Task</a>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Created at</th>
+                        <th>Due date</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>
+                            {% if task.task_photos.all %}
+                            <img src="{{ task.task_photos.all.first.photo.url }}" width="50" />
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'task_detail' task.slug %}">{{ task.title }}</a>
+                        </td>
+                        <td>{{ task.created_at }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>{{ task.priority }}</td>
+                        <td>
+                            {% if task.is_completed %}
+                                <span>Completed</span>
+                            {% else %}
+                                <span>Incomplete</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'task_update' task.slug %}">Edit</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">No tasks found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
