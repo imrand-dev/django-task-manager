@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+django = "==4.2.8"
 black = "*"
 isort = "*"
 flake8 = "*"
@@ -24,4 +24,4 @@ psycopg2 = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.12"
+python_version = "3.10"
